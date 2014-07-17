@@ -10,13 +10,19 @@
         <ui:define name="body">
             <h:form prependId="false">
                 <h:outputLabel value="Name:" for="nameInput" />
-                <h:inputText id="nameInput" value="#{richBean.name}">
-                    <a4j:ajax event="keyup" render="output" />
+                <h:inputText id="nameInput" value="#{userBean.name}">
                 </h:inputText>
+                <br/>
+                <!--
                 <h:panelGroup id="output">
-                    <h:outputText value="Hello #{richBean.name}!"
-                        rendered="#{not empty richBean.name}" />
-                </h:panelGroup>
+                    <h:outputText value="Hello #{userBean.name}!"
+                                  rendered="#{not empty userBean.name}" />
+                </h:panelGroup>-->
+                <h:outputLabel value="Surname:" for="surnameInput" />
+                <h:inputText id="surnameInput" value="#{userBean.surname}">                    
+                </h:inputText>
+                 <a4j:commandButton value="Save"
+                                    action="#{userBean.addUser}" />
                             </h:form>
         </ui:define>
     </ui:composition>
