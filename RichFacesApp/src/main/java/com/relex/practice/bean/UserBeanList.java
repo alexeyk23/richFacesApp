@@ -6,6 +6,7 @@
 
 package com.relex.practice.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -19,17 +20,18 @@ import javax.persistence.Query;
  * @author alex
  */
 @ManagedBean
-public class UserBeanList {
+public class UserBeanList implements Serializable   {
     private List<UserBean> users = new ArrayList<UserBean>();
 
     public List<UserBean> getUsers() {
+        loadUsers();
         return users;
     }
 
     public void setUsers(List<UserBean> users) {
         this.users = users;
     }
-    private void loadUsers()
+    public void loadUsers()
     {
         try {
                 Class.forName("org.postgresql.Driver");            
