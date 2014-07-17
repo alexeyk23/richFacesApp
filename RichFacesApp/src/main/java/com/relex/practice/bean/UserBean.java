@@ -9,10 +9,7 @@ package com.relex.practice.bean;
 import com.relex.practice.pojo.User;
 import java.io.Serializable;
 import java.util.Date;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -27,7 +24,9 @@ public class UserBean implements Serializable
 {
     private String name;
     private  String surname;
-
+    private String email;
+    private  Date date;
+    
     public String getName() {
         return name;
     }
@@ -59,8 +58,7 @@ public class UserBean implements Serializable
     public void setDate(Date date) {
         this.date = date;
     }
-   private String email;
-  private  Date date;
+    
     public void addUser()
     {
         User usr= new User();
@@ -70,10 +68,8 @@ public class UserBean implements Serializable
         usr.setData(date);
         //usr.setDivision(null);
         try {
-            Class.forName("org.hsqldb.jdbcDriver");
-            Class.forName("org.postgresql.Driver");
-            
-        } catch (Exception e) {
+                Class.forName("org.postgresql.Driver");            
+        } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
         EntityManagerFactory emf= Persistence.createEntityManagerFactory("manager");
@@ -82,6 +78,6 @@ public class UserBean implements Serializable
         em.persist(usr);
         em.getTransaction().commit();
         em.close();
-         FacesContext.getCurrentInstance().addMessage("OK!", new FacesMessage("AHA"));
+       //  FacesContext.getCurrentInstance().addMessage("OK!", new FacesMessage("AHA"));
     }
 }

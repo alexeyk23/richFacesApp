@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Table(name = "\"USER\"")
 public class User {
 	@Id
+        @SequenceGenerator(name="my_seq", sequenceName="auto_id_user")
+        @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "my_seq")
 	@Column(name = "\"USER_ID\"")
 	private int id_user;
 

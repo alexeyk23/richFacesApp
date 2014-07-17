@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
 
 <body>
     <ui:composition template="/templates/template.xhtml">
@@ -12,7 +13,7 @@
                 <h:outputLabel value="Name:" for="nameInput" />
                 <h:inputText id="nameInput" value="#{userBean.name}">
                 </h:inputText>
-                <br/>
+                <h:body><br/></h:body>
                 <!--
                 <h:panelGroup id="output">
                     <h:outputText value="Hello #{userBean.name}!"
@@ -21,6 +22,14 @@
                 <h:outputLabel value="Surname:" for="surnameInput" />
                 <h:inputText id="surnameInput" value="#{userBean.surname}">                    
                 </h:inputText>
+                 <h:body><br/></h:body>
+                  <h:outputLabel value="Email:" for="emainInput" />
+                <h:inputText id="email" value="#{userBean.email}">                    
+                </h:inputText>           
+                <h:body><br/></h:body>
+                 <h:outputLabel value="Data of regestration:" for="dataInput" />
+                <rich:calendar id="date" value="#{userBean.date}"/>
+                 <h:body><br/></h:body>
                  <a4j:commandButton value="Save"
                                     action="#{userBean.addUser}" />
                             </h:form>
