@@ -22,6 +22,15 @@ import javax.persistence.Persistence;
 @ManagedBean
 public class UserBean implements Serializable  
 {
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     private String name;
     private  String surname;
     private String email;

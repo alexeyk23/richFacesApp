@@ -8,6 +8,8 @@ package com.relex.practice.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
@@ -41,9 +43,22 @@ public class UserBeanList implements Serializable   {
          EntityManagerFactory emf= Persistence.createEntityManagerFactory("manager");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        Query createNamedQuery = em.createNamedQuery("SELECT \"USER_ID\", \"NAME\", \"SURNAME\", \"MAIL\", \"DATAREG\", \"DIVISION_ID\"  FROM \"USER\"");
+        Query createNamedQuery = em.createNativeQuery("SELECT \"USER_ID\", \"NAME\", \"SURNAME\", \"MAIL\", \"DATAREG\"  FROM \"USER\"");
         List resultList = createNamedQuery.getResultList();
-        setUsers(resultList);    
+        Iterator a = resultList.iterator();
+        users.clear();
+            while (a.hasNext()) 
+            {
+             Object[] arr = (Object[])a.next();
+              UserBean user = new UserBean();
+              user.setId((Integer)arr[0]);
+              user.setName((String)arr[1]);
+              user.setSurname((String)arr[2]);
+              user.setEmail((String)arr[3]);
+              user.setDate((Date)arr[4]);
+              users.add(user);              
+            }  
+            
         em.getTransaction().commit();
         em.close();
     }

@@ -31,10 +31,24 @@
                 <rich:calendar id="date" value="#{userBean.date}"/>
                  <h:body><br/></h:body>
                  <a4j:commandButton value="Save"
-                                    action="#{userBean.addUser}" />
+                                    action="#{userBeanList.loadUsers}" />
                             </h:form>
-            <rich:dataTable value="#{userBeanList.users}">
-                    
+           <rich:dataTable var="ubean" value="#{userBeanList.users}">
+                    <rich:column>
+                            <h:outputText value="#{ubean.id}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.name}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.surname}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.email}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.date}"></h:outputText>                            
+                        </rich:column>
                     
                 </rich:dataTable>
         </ui:define>
