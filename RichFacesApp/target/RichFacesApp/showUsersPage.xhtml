@@ -17,6 +17,25 @@ and open the template in the editor.
             <ui:define name="body">
                  <h:form prependId="false">
                    <rich:dataTable var="ubean" value="#{userBeanList.users}">
+                        <f:facet name="header">
+                        <rich:columnGroup>                            
+                            <rich:column >
+                                <h:outputText value="ID" />
+                            </rich:column>                                                      
+                            <rich:column>
+                                <h:outputText value="NAME" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="SURNAME" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="EMAIL" />
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="DATE" />
+                            </rich:column>
+                        </rich:columnGroup>
+                    </f:facet>
                     <rich:column>
                             <h:outputText value="#{ubean.id}"></h:outputText>                            
                         </rich:column>
