@@ -15,11 +15,28 @@ and open the template in the editor.
     <body>
         <ui:composition template="/templates/template.xhtml">
             <ui:define name="body">
-                <rich:dataTable value="#{userBeanList.users}">
-                    
+                 <h:form prependId="false">
+                   <rich:dataTable var="ubean" value="#{userBeanList.users}">
+                    <rich:column>
+                            <h:outputText value="#{ubean.id}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.name}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.surname}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.email}"></h:outputText>                            
+                        </rich:column>
+                <rich:column>
+                            <h:outputText value="#{ubean.date}"></h:outputText>                            
+                        </rich:column>
                     
                 </rich:dataTable>
-            </ui:define>
+                <a4j:commandButton action="GOtoIndex" value="Add new user"></a4j:commandButton>
+                 </h:form>
+            </ui:define>      
             
         </ui:composition>        
     </body>
